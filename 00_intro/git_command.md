@@ -6,11 +6,9 @@
     * git/django,javascript,vue
     * `git config --global user.name "username"` : username 등록
     * `git config --global user.email <email>` : email 등록
-
 * **Working Directory(내 로컬 폴더)**  **1회**
   * `git init` : 깃과 최초 연결하기(.git폴더가 생성됨)
   * `git remote add origin <레포주소>`: 레포 연결
-
 * **Staging Area(.git폴더)** **필요할 때마다**
   * `git remote` : remote 별명 확인
   * `git remote -v` : remote 주소 확인
@@ -20,4 +18,12 @@
   * `git commit -m "할 말"` : 할 말로 커밋해줘
 * **깃헙에 push하기**
   * git push -u origin master` : 최초 push 때만,마스터 저장소로 보내줘(저장해줘)
-  * 
+* **git pull하기** **<복제 + master에 수정도 가능>**
+  * pull 해 올 폴더 생성
+  * 해당 폴더에 `git init` 한 다음
+  * `git remote add origin <주소>`  : 해당 주소와 깃을 연결한다는 뜻
+  * `git pull origin master` : 해당 주소 파일을 다 가져옴
+* **git clone하기** **<해당 상태 그대로 복제>**
+  * clone파일 저장할 폴더생성
+  * 해당 폴더에 `git init`  한 다음
+  * `git clone <가져올 주소>` : 해당 파일 가져오기 
