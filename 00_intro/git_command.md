@@ -18,7 +18,7 @@
   * `git commit -m "할 말"` : 할 말로 커밋해줘
 * **깃헙에 push하기**
   * git push -u origin master` : 최초 push 때만,마스터 저장소로 보내줘(저장해줘)
-* **git pull하기** **<복제 + master에 수정도 가능>**
+* **git pull하기** **<복제 + master에 수정도 가능(권한 있을 경우)>**
   * pull 해 올 폴더 생성
   * 해당 폴더에 `git init` 한 다음
   * `git remote add origin <주소>`  : 해당 주소와 깃을 연결한다는 뜻
@@ -27,3 +27,5 @@
   * clone파일 저장할 폴더생성
   * 해당 폴더에 `git init`  한 다음
   * `git clone <가져올 주소>` : 해당 파일 가져오기 
+  * **CLIF오류 떴을 때**(깃헙에서 맥인지 윈도우인지 헷갈려서 나타나는 오류)
+    * `git config --global core.autocrlf true` 입력하면 끝
