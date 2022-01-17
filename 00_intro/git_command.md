@@ -29,3 +29,6 @@
   * `git clone <가져올 주소>` : 해당 파일 가져오기 
   * **CLIF오류 떴을 때**(깃헙에서 맥인지 윈도우인지 헷갈려서 나타나는 오류)
     * `git config --global core.autocrlf true` 입력하면 끝
+* **커밋 내역 확인 + 커밋 고유번호 확인 가능**
+  * `git log` : 커밋 히스토리 상세 확인
+  * `git log oneline` : 커밋 히스토리 간략 확인 
