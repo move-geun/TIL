@@ -80,9 +80,11 @@ def function(argument, argument2):
   * `**` 사용할 경우, dictionary 형태로 처리됨
 
   * ```python
+    #선언
     def abc(**argss):
-        for key, value in argss:
+        for key, value in argss.items():
             print(key, ":", value)
+    #호출
     abc(a='a', b='b', c='c')
     ```
 
@@ -278,7 +280,8 @@ def function(argument, argument2):
     result = filter(odd,numbers)
     print(result, type(result))
     # <filter object at 0x10e4dfc10> <class 'filter'>
-    list(result)
+    # 이 상태에 result 는 [T,F,T]임
+    list(result) #사용하려면 형변환을 해주어야한다
     # [1,3]
     ```
 
@@ -294,6 +297,8 @@ def function(argument, argument2):
     # <class 'zip'>
     list(pair)
     # [('jain', 'justin'),('ashley','eric')]
+    # 각 요소의 갯수가 다를 경우, 작은 요소에 맞춰서 zip object 반환됨
+    # zip 되는 리스트 갯수에 제한 X
     ```
 
 * `lambda[parameter]:  표현식`
