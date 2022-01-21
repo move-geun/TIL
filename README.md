@@ -72,7 +72,7 @@
 
 * `![string](img_url)`  : 형식으로 생성, string 이름의 이미지가 나타난다
 
-  ex) `![뽀로로](뽀로로 사진url)` 입력 결과 ![bbororo](https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMDdfMTY2%2FMDAxNjQxNTE4NDIzMzMy.WePLgnDWghKJRJvejvQ7R5SjcUK9FCqfbgd5sblrrtog.V6IXQf9wnMQNT_fKyBKmtZ69NjbasJvjkz28zR0KB3Yg.PNG.haebaba21%2Fimage.png&type=sc960_832)
+  ![뽀로로](https://user-images.githubusercontent.com/85543481/150553159-5c163510-13af-449f-926c-b3b561bb3a51.jpg)
 
 ​	=> 인터넷에서 이미지 url 긁어온 경우 해당 홈페이지가 사라지면 더 이상 해당 이미지를 볼 수 없음
 
