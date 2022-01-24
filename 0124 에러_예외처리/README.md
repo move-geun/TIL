@@ -88,8 +88,6 @@ except (TypeError, ZeroDivisionError) :
 * `raise  <표현식>(메세지)` : 표현식에 예외타입을 지정해야함, 없을 경우 마지막 예외를 다시 일으킴
 * ![image](https://user-images.githubusercontent.com/85543481/150735985-9f55f18d-8947-4b42-b41e-d63936dc4f9f.png)
 
-
-
 ##### assert
 
 * 상태를 검증하는데 사용되며, 무조건 AssertionError 발생
