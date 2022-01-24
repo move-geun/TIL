@@ -31,11 +31,11 @@
   * CLI로써, 사용자와 컴퓨터가 상호 작용하는 방식
   * 키보드를 통해 문자열의 형태로 작업 명령 입력
 
-  ![image-20220121092431976](README.assets/image-20220121092431976.png)
+  ![image-20220121092431976](https://user-images.githubusercontent.com/85543481/150729134-3520ac65-9a1d-4481-94ef-61ce6f88b3b8.png)
 
   * GUI : 그래픽 기반의 인터페이스 `<-> ` CLI
 
-  ![image-20220121092541726](README.assets/image-20220121092541726.png)
+  ![image-20220121092541726](https://user-images.githubusercontent.com/85543481/150729161-742d1b70-fad8-4ef0-9643-8a5150bdc6ef.png)
 
 * **Git bash 명령어** (여러 터미널에서 사용가능하지만 터미널 종류에 따라 호환되지 않는 것도 일부 있음)
 
