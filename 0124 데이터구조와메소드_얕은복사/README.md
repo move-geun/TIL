@@ -99,7 +99,68 @@
     | d.pop(k,v)   | 키 k의 값을 반환하고, 키 k인 항목을 딕셔너리 d에서 삭제하는데,<br />키 k가 딕셔너리 d에 없을 경우 v 반환 |
     | d.update(..) | 딕셔너리 d의 값을 매핑하여 업데이트                          |
 
-  * **얕은 복사와 깊은 복사**
+---
+
+#### 3. 복사방법
+
+* **할당**
+
+  * 대입 연산자 `=`
+
+  * **이렇게 같은 객체를 바라보기 때문에 함께 변함**
+
+  * ```python
+    original_list = [1,2,3]
+    copy_list = original_list
+    print(original_list, copy_list)
+    #=> [1,2,3] [1,2,3]
+    copy_list[0] = 'hello'
+    print(original_list, copy_list)
+    #=> ['hello',2,3] ['hello',2,3]
+    ```
+
+  * **이를 막기 위해서는** 슬라이싱 또는 list화 해야함
+
+  * ```python
+    original_list = [1,2,3]
+    copy_list = original_list[:]
+    #or
+    #copy_list = list(original_list)
+    print(original_list, copy_list)
+    #=> [1,2,3] [1,2,3]
+    copy_list[0] = 'hello'
+    print(original_list, copy_list)
+    #=> [1,2,3] ['hello',2,3]
+    ```
+
+* **얕은 복사**
+
+  * 2차원 구조와 같은 상태에서 복사하는 리스트가 같은 객체를 참조하는 경우
+
+  * ```python
+    a = [1,2,['a','b']]
+    b = a[:]
+    print(a,b)
+    b[2][0] = 0
+    print(a,b)
+    #=> [1,2,['a','b']] [1,2,['a','b']]
+    #=> [1,2,[0,'b']] [1,2,[0,'b']]
+    ```
+
+* **깊은 복사**
+
+  * 얕은 복사를 해결하기 위해선 `import copy` - `deepcopy` 사용
+
+  * ```python
+    import copy
+    a = [1,2,['a','b']]
+    b = copy.deepcopy(a)
+    print(a,b)
+    b[2][0] = 0
+    print(a,b)
+    #=> [1,2,['a','b']] [1,2,['a','b']]
+    #=> [1,2,['a','b']] [1,2,[0,'b']]
+    ```
 
   * 
 
