@@ -125,8 +125,8 @@
       pass
   
   my_instance = MyClass() # 인스턴스 생성
-  my_instance.my_method() # 메소드 호출
-  my_instance.my_attribue # 속성
+  my_instance.my_method() # 메소드(=클래스 내부 함수) 호출
+  my_instance.my_attribue # 클래스 내부의 속성
   ```
 
   ---
@@ -177,6 +177,7 @@
               self.name = name
               self.age = age
               print(f'인스턴스가 생성되었습니다. {name}')
+             
               
       person1 = Person('지민', 14)
       #=> 인스턴스가 생성되었습니다. 지민
@@ -237,10 +238,10 @@
     ```python
     class Circle :
         
-        pi = 3.14 #클래스 변수
+        pi = 3.14 #클래스 변수(고정요소에 대해 인스턴스 변수가 아닌 클래스 변수로 저장 후 사용)
         
         def __init__(self,r):
-            self.r = 
+            self.r = r
         
         def area(self):
             return Cicle.pi * self.r * self.r
@@ -264,7 +265,7 @@
         var = 'Class 변수'
         
         @classmethod
-        def class_method(cls):
+        def class_method(cls): #인스턴스메소드랑 구분하기 위해 self 대신 cls를 넣는거임
            	print(cls.var)
             return cls
     
@@ -282,7 +283,7 @@
     class MyClass :
     
         @staticmethod
-        def static_method():
+        def static_method(): 
             return 'static'
         
     MyClass.static_method() # static
@@ -320,7 +321,7 @@
 
 ---
 
-#### 2. 객체지향의 핵심개념
+#### 2. 객체지향의 핵심개념(4대개념)
 
 * #### 추상화
 
@@ -399,7 +400,7 @@
 
     * `isinstance(object, classinfo)` : classinfo의 instance거나 subclass인 경우 `True`
 
-    * `issubclass(class, classinfo)` : class가 classinfo의 subclass면 `True`
+    * `issubclass(class, classinfo)` : class가 classinfo의 subclass면 `True` 상속관계여부
 
       ```python
       issubclass(bool, int)			# True
@@ -496,7 +497,7 @@
 
     * 언더바 없이 시작하는 메소드나 속성, 어디서나 호출 가능, 하위 클래스 override 허용
 
-  * `Protected Access Modifier` : 상속 관계에만 가능
+  * `Protected Access Modifier` : 상속 관계에만 가능 // 실제적으로 없음
 
     * 언더바 1개로 시작, 암묵적 규칙에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
     * 하위 클래서 override 허용
@@ -511,15 +512,17 @@
             return self._age
     
     p1 = Person('송지', 23)
+    p1.age()				# 오류 (일반적으로 사용하는 방식이 아닌
+    						# 언더바 하나를 넣음으로 정보 보호역할)
     p1.get_age()			# 23
     p1._age					# 23 / 이렇게 직접 접근해도 확인 가능하지만 암묵적으로 활용
     ```
 
   * `Private Access Modifier` : 본인 내부에서만 가능
-
+  
     * 언더바 2개로 시작, 본 클래스 내부에서만 사용 가능
     * 하위 클래스 상속 및 호출 불가, 외부 호출 불가
-
+  
     ```python
     class Person:
         def __init__(self, name, age):
@@ -532,33 +535,59 @@
     p1 = Person('아이', 30)
     p1.get_age()			# 30
     p1.__age				# 불가능
+    #언제 사용하냐? 여기서 name과 age 두개를 받아오지만, age는 private하게 만들고 싶을 때.
+    #
     ```
-
+  
   * **getter 메소드와 setter 메소드**
-
+  
     * 변수에 접근할 수 있는 메소드를 별도로 생성
       * **getter 메소드** : 변수의 값을 읽는 메소드
       * `@property` 데코레이터 사용
       * **setter 메소드** :  변수의 값을 설정하는 성격의 메소드
       * `@변수.setter` 사용
-
+  
     ```python
+    #데코레이터 사용한 getter/setter 사용방법
     class Person:
         
         def __init__(self, age):
-            self._age = age
+            self.__age = age		#private 설정
             
         @property
-        def age(self):
-            return self._age
+        def age(self):				#getter
+            return self.__age
         
         @age.setter
-        def age(self, new_age):
-            self._age = new_age - 10
+        def age(self, value):		#setter
+            self.__age = value
         
     p1 = Person(40)
-    p1.age()		# 출력 안됨
-    p1.age			# 40  @property를 붙여서 속성처럼 사용 가능 
+    p1.age()		    # private이라 출력 안됨
+    print(p1.age)	    # 40  @property를 붙여서 속성처럼 사용 가능 
+    p1.age = 33         # private 이라 접근불가지만, setter 데코를 사용하여 값 변경 가능.
+    print(p1.age)       # 33	
     ```
-
+    
+    ```python
+    #데코레이터 없이 getter/setter 사용법
+    class Person():
+        
+        def __init__(self,age):
+            self.__age = age		#private 설정
+            
+        def get_age(self):			#getter
+            return self.__age
+        
+        def set_age(self, value):	#setter
+            self.__age = value
+      
+    p1 = Person(40)
+    p1.age()		        # private이라 출력 안됨
+    print(p1.get_age())	    # 40  
+    p1.set_age(33)          # private 이라 접근불가하지만, 
+    					    # .set_age() 를 통해 값 변경 가능
+    print(p1.get_age())	   # 33	
+    ```
+    
     
