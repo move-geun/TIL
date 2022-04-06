@@ -241,7 +241,7 @@ form.save()
 def creat(request):
     
     # method가 POST라면 create 작동
-    if request.method == 'POST'
+    if request.method == 'POST':
     	form = ArticleForm(request.POST)
     	# is_valid를 통해 유효성 검사를 통과한다면
     	if form.is_valid():
