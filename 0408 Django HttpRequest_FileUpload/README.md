@@ -79,7 +79,7 @@ Django에서 HTTP 요청 처리방법
        * view 함수가 특정한 method 요청에 대해서만 허용하도록 하는 데코레이터
 
          ```python
-         from django.views.decoraters.http import reqire_http_methods
+         from django.views.decoraters.http import require_http_methods
          
          # 데코레이터를 통해 GET과 POST만 허용되게 만들어줌
          # 이외의 경우 405 응답 return
@@ -115,9 +115,9 @@ Django에서 HTTP 요청 처리방법
        * view 함수가 POST method 요청만 승인하도록 하는 데코레이터
 
          ```python
-         from django.views.decoraters.http import reqire_POST
+         from django.views.decoraters.http import require_POST
          
-         @require_POST
+         @require_POST()
          def delete(request, pk):
              article = get_object_or_404(Article, pk=pk)
              # 데코를 통해 POST만 들어오게 되니까 if문 생략 가능 and 인덴트 맞추기
@@ -135,13 +135,13 @@ Django에서 HTTP 요청 처리방법
        * django는 require_GET 대신 require_safe 사용을 권장
 
          ```python
-         from django.views.decoraters.http import reqire_safe
+         from django.views.decoraters.http import require_safe
          
-         @require_safe
+         @require_safe()
          def index(request):
              pass
          
-         @require_safe
+         @require_safe()
          def detail(request, pk):
              pass
          
