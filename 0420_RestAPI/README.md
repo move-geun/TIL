@@ -532,7 +532,7 @@ def comment_detail(request, comment_pk):
         # 조금 더 명확하게 아래와 같이 작성해도 된다
         # serializer = CommentSerializer(article, data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            serializer.save(article=article)
             return Response(serializer.data)
 
 
