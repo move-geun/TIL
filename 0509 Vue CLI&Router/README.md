@@ -660,36 +660,71 @@ export default router
 
 #### router-link
 
+```vue
+<router-link to='/'>Home</router-link>
+<router-link to='/about'>About</router-link>
+```
 
++ 사용자 네비게이션을 가능하게 하는 컴포넌트
+
++ 목표 경로는 'to' prop으로 지정됨
++  like `a tag`, but 기본 GET 요청을 보내는 이벤트 제거된 형태로 구성
 
 
 
 #### router-view
 
+```vue
+<template>
+  <div id="app">
+    <nav>
+      <router-link to="/">App</router-link>
+    </nav>
+    <!--요기에 있음-->  
+    <router-view/>
 
+  </div>
+</template>
+```
 
-
++ 주어진 라우트에 대해 일치하는 컴포넌트를 렌더링하는 컴포넌트
++ 실제 component가 DOM에 부착되어 보이는 자리 의미
++ router-link를 클릭하면, 해당 경로와 연결되어 있는 index.js에 정의한 컴포넌트 위치
 
 #### [참고]History mode
 
++ HTML history API 사용해서 router를 구현한 것
++ 히스토리는 남기지만 실제 페이지는 이동 X
++ 즉, 페이지를 다시 로드하지 않고 URL 탐색 가능
+  + SPA의 단점 중 하나인 URL이 변경되지 않는다 해결
+
+---
+
+####  Named Routes
+
+![image-20220510165315703](README.assets/image-20220510165315703.png)
+
+![image-20220510165353132](README.assets/image-20220510165353132.png)
+
++ 이름을 가지는 라우트
++ 명명된 경로로 이동하려면 객체를 vue-router 컴포넌트 요소의 prop에 전달
 
 
 
+####  Dynamic Route Matching(동적인자전달)
 
-#### 1. Named Routes
++ 주어진 패턴을 가진 라우트를 동일 컴포넌트에 매핑해야하는 경우
 
-```
-```
+  + 예를 들어 모든 User에 대해 동일한 레이아웃을 가지지만, 다른  User ID로 렌더링 되어야하는 User 컴포넌트
 
+    ![image-20220510165651620](README.assets/image-20220510165651620.png)
 
+    ![image-20220510165759277](README.assets/image-20220510165759277.png)
 
-#### 2. 프로그래밍 방식 네비게이션
+    ![image-20220510165812124](README.assets/image-20220510165812124.png)
 
+    ![image-20220510165734018](README.assets/image-20220510165734018.png)
 
+    
 
-
-
-#### 3. Dynamic Route Matching(동적인자전달)
-
-
-
+---
