@@ -29,9 +29,34 @@ def indeed_last_pn():  # 페이지만 뽑아오기 // pagenation의 마지막 �
     return max_pn
 
 
-# page 변경하면서 request 확인
+# job 정보들 받아오기
+def job_info(info):
+    title = info.find("a").find("span").string
+    company = info.find("span", {"class":"companyName"}).string
+    location = info.find("div", {"class":"companyLocation"}).string
+    job_id = info.find("a")["data-jk"]
+    link = f'https://kr.indeed.com/채용보기?jk={job_id}'
+    return {
+        "title" : title,
+        "company" : company,
+        "location" : location,
+        "link" : link,
+    }
+
+
+# page 변경하면서 job 받아오기
 def indeed_page_change(num):
+    view_jobs = list()
     for n in range(num):
         result = requests.get(f'{URL}&start={LIMIT*n}')
-        print(result.status_code)
+        indeed_soup = BeautifulSoup(result.text, "html.parser")
+        result_contents = indeed_soup.find_all("td",{"class":"resultContent"})
+        for result_content in result_contents:
+            view_job = job_info(result_content)
+            view_jobs.append(view_job)
+    return view_jobs
 
+
+def indeed_get_job():
+    last_num = indeed_last_pn()
+    return indeed_page_change(last_num)
