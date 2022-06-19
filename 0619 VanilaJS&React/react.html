@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    // const span = React.createElement(
+    //   "span",
+    //   null,
+    //   "Total clicks : 0"); // property가 null인 span 생성하기
+
+    // const Span = () => <span>Total clicks : 0</span>;  화살표 함수로 생성
+    function Span() {
+      return <span>Total clicks : 0 </span>;
+    }
+    // const button= React.createElement(
+    //   "button",
+    //   {
+    //     onClick:()=> console.log("im clicked"),
+    //     id:"btn"
+    //   },
+    //   "Click me!"); // property에서 onclick이벤트가 붙어있는 id가 btn인 button 생성
+    //    // container라는 div 생성 후, 우리가 만든 span, button 넣어주기
+    const Button = () => (
+      <button onClick={() => console.log("im clicked")}>Click me!</button>
+    );
+    const Container = () => (
+      <div>
+        <Span />
+        <Button />
+      </div>
+    ); // <span />으로 적을 경우 html span 태그로 인식하기 때문에, 함수는 대문자로 만들어주어야 한다
+    ReactDOM.render(<Container />, root); // body 안, root안에 우리가 만든 container 위치 시키기
+  </script>
+</html>
