@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
+    /* JSX 사용법 -------------------------------------------------------------------------------
     const root = document.getElementById("root");
     // const span = React.createElement(
     //   "span",
@@ -35,5 +36,44 @@
       </div>
     ); // <span />으로 적을 경우 html span 태그로 인식하기 때문에, 함수는 대문자로 만들어주어야 한다
     ReactDOM.render(<Container />, root); // body 안, root안에 우리가 만든 container 위치 시키기
+    --------------------------------------------------------------------------------------------- */
+
+    /* ver.1 (비추천) ----------------------------------------------------------------------------
+    const root = document.getElementById("root");
+    let counter = 0;
+    function Counter() {
+      counter = counter + 1;
+      render();
+    }
+    function Container() {
+      return (
+        <div>
+          <span>Total clicks : {counter}</span>
+          <button id="btn" onClick={Counter}>
+            Click me!
+          </button>
+        </div>
+      );
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    render();
+    -----------------------------------------------------------------------------------------------*/
+
+    const root = document.getElementById("root");
+    function App() {
+      const [data, setData] = React.useState(0);
+      function onClick() {
+        return setData(data + 1);
+      }
+      return (
+        <div>
+          <span>Total clicks : {data}</span>
+          <button onClick={onClick}>Click me!</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
   </script>
 </html>
