@@ -129,3 +129,66 @@
 
 ```
 
+
+
+#### Select 옵션을 통해 필요 컴포넌트 렌더링하기
+
+1. useState를 통해 select에 사용할 배열을 생성해준다
+
+2. 각 option에 사용할 index를 부여해주고
+
+3. if 문을 통해 필요 컴포넌트를 렌더링 해준다.
+
+   ```react
+   <!DOCTYPE html>
+   <html lang="en">
+     <body>
+       <div id="root"></div>
+     </body>
+     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     <script type="text/babel">
+       const root = document.getElementById("root");
+   
+       function MinutesToHours() {
+         return (
+         <div></div>
+         )
+       }
+       function KmToMiles() {
+         return (
+         <div></div>
+         )
+       }
+   
+       // select option을 사용해서 필요 컴포넌트 렌더링하기
+       // 각 인덱스에 value를 주어주고, value가 선택될 경우
+       // value에 맞는 컴포넌트를 렌더링 해주는 방식
+       function App() {
+         const [index, setIndex] = React.useState("xx");
+         function onChange(event) {
+           setIndex(event.target.value);
+         }
+         return (
+           <div>
+             <h3>Super Converter</h3>
+             <select value={index} onChange={onChange}>
+               <option value="xx">Select Converter Option</option>
+               <option value="0">Minutes & Hours</option>
+               <option value="1">Km & Miles</option>
+             </select>
+             <hr />
+             {index === "xx" ? "Select Converter Option" : null}
+             {index === "0" ? <MinutesToHours /> : null}
+             {index === "1" ? <KmToMiles /> : null}
+           </div>
+         );
+       }
+       ReactDOM.render(<App />, root);
+     </script>
+   </html>
+   
+   ```
+
+   
