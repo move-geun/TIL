@@ -201,3 +201,67 @@ Btn은 컴포넌트이기 때문에, onClick은 이벤트리스너가 아닌 pro
 
 ![image-20220624173358717](README.assets/image-20220624173358717.png)
 
+#### PropTypes
+
+1. 리액트는 파라미터를 잘 못 넘겨도 확인할 수 없는 문제점이 존재
+
+2. 이런 문제를 줄이기 위해서 PropTypes라는 모듈의 도움을 받을 수 있다.
+
+3. type과 다르게 입력 되엇을 경우 warning을 뜨 할수 있고, parameter 에 값을 넣지 않는 경우 경고 메시지를 띄울수 있다.
+
+`https://unpkg.com/prop-types@15.7.2/prop-types.js` - script에 추가해주기
+
+```react
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Btn({ text, big, fontSize = 16 }) {
+      // fontSize가 지정되지 않을 경우 기본값 16
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            margin: "5px",
+            border: "0",
+            borderRadius: "10px",
+            // fontSize: big ? 18 : 12,
+            fontSize,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    Btn.propTypes = {
+      text: PropTypes.string, // text는 string 형태라는 것
+      fontSize: PropTypes.number.isRequired, // fontSize는 필수라는 것
+    };
+    function App() {
+      return (
+        <div>
+          <Btn text="Save Button" big={true} fontSize={18} />
+          <Btn text="Change Button" />
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+
+```
+
+
+
+![image-20220626231933197](README.assets/image-20220626231933197.png)
+
+다음과 같이 에러가 뜨게 된다!

@@ -3,11 +3,35 @@
   <body>
     <div id="root"></div>
   </body>
-  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
+    function Btn({ text, big, fontSize = 16 }) {
+      // fontSize가 지정되지 않을 경우 기본값 16
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            margin: "5px",
+            border: "0",
+            borderRadius: "10px",
+            // fontSize: big ? 18 : 12,
+            fontSize,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired, // text string 형태라는 뜻
+      fontSize: PropTypes.number.isRequired, // fontSize이 필수라는 뜻
+    };
     function App() {
       // props 전달법
       // Btn 컴포넌트는 아래와 같은 style을 가진 btn을 생성하는 컴포넌트이다.
@@ -32,23 +56,7 @@
           }
     */
       // props 전달 축약 사용법 => props 대신 {인자}로 사용
-      function Btn({ text, big }) {
-        return (
-          <button
-            style={{
-              backgroundColor: "tomato",
-              color: "white",
-              padding: "10px 20px",
-              margin: "5px",
-              border: "0",
-              borderRadius: "10px",
-              fontSize: big ? 18 : 12,
-            }}
-          >
-            {text}
-          </button>
-        );
-      }
+
       // <Btn banana="메롱" super={true} />
       // <Btn banana="메롱" />와 같이 작성할 경우
       // props에
@@ -56,7 +64,7 @@
       // {"banana":"메롱", "super":undefined} 로 전달된다.
       return (
         <div>
-          <Btn text="Save Button" big={true} />
+          <Btn text="Save Button" big={true} fontSize={18} />
           <Btn text="Change Button" />
         </div>
       );
