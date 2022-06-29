@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 function App() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
-
+  const [selects, setSelects] = useState("");
+  function onChange(event) {
+    setSelects(event.target.value);
+  }
+  function onClick() {
+    console.log(selects);
+  }
   useEffect(() => {
     // fetch로 api 받아오고
     fetch("https://api.coinpaprika.com/v1/tickers")
@@ -13,22 +19,31 @@ function App() {
       .then((json) => {
         setCoins(json);
         setLoading(false);
+        const firstValue = [
+          json[0].name,
+          json[0].symbol,
+          json[0].quotes.USD.price,
+        ];
+        setSelects(firstValue);
       });
   }, []);
   return (
     <div>
       <h1>{loading ? "Loading..." : "Now Select Ur Coin!"}</h1>
       {loading ? null : (
-        <select>
+        <select value={selects} onChange={onChange}>
           {coins.map((coin) => (
-            <option key={coin.id}>
+            <option
+              key={coin.id}
+              value={[coin.name, coin.symbol, coin.quotes.USD.price]}
+            >
               {coin.name} ({coin.symbol}) : $ {coin.quotes.USD.price} USD
             </option>
           ))}
         </select>
       )}
+      <button onClick={onClick}>Click</button>
       <hr />
-      {/* {coin.quotes.USD.price} */}
     </div>
   );
 }
