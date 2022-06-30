@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 function App() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
-  const [selects, setSelects] = useState("");
+  const [selects, setSelects] = useState(0);
+  const [money, setMoney] = useState("");
   function onChange(event) {
-    setSelects(event.target.value);
+    setSelects(event.target.value - 1);
+  }
+  function moneyChange(event) {
+    setMoney(event.target.value);
   }
   function onClick() {
     console.log(selects);
@@ -19,24 +23,15 @@ function App() {
       .then((json) => {
         setCoins(json);
         setLoading(false);
-        const firstValue = [
-          json[0].name,
-          json[0].symbol,
-          json[0].quotes.USD.price,
-        ];
-        setSelects(firstValue);
       });
   }, []);
   return (
     <div>
       <h1>{loading ? "Loading..." : "Now Select Ur Coin!"}</h1>
       {loading ? null : (
-        <select value={selects} onChange={onChange}>
+        <select onChange={onChange}>
           {coins.map((coin) => (
-            <option
-              key={coin.id}
-              value={[coin.name, coin.symbol, coin.quotes.USD.price]}
-            >
+            <option key={coin.id} value={coin.rank}>
               {coin.name} ({coin.symbol}) : $ {coin.quotes.USD.price} USD
             </option>
           ))}
@@ -44,6 +39,24 @@ function App() {
       )}
       <button onClick={onClick}>Click</button>
       <hr />
+      <div>
+        {loading ? null : (
+          <div>
+            <div>
+              <input
+                onChange={moneyChange}
+                type="number"
+                placeholder="Ur money"
+              ></input>
+              USD
+            </div>
+            <h4>
+              You can have {money / coins[selects].quotes.USD.price}
+              {coins[selects].name}
+            </h4>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
