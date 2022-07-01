@@ -18,7 +18,7 @@
 
 2. JSX - `production.min.js` 에서는 오류 안나지만, `develope.min.js`에서는 인식 못함
 
-   ```react
+   ```javascript
    <!DOCTYPE html>
    <html lang="en">
      <body>
@@ -58,7 +58,7 @@
 
 시간 - 분 단위변환 만들기 연습 예시
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -139,7 +139,7 @@
 
 3. if 문을 통해 필요 컴포넌트를 렌더링 해준다.
 
-   ```react
+   ```javascript
    <!DOCTYPE html>
    <html lang="en">
      <body>
