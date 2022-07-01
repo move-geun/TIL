@@ -1,6 +1,6 @@
 ### React Props 
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -84,7 +84,7 @@
 
 이름은 똑같이 생겼더라도, props로 전달될 뿐 추가 작업을 해줘야 function을 적용 시켜줄 수 있다
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -164,7 +164,7 @@ Btn은 컴포넌트이기 때문에, onClick은 이벤트리스너가 아닌 pro
 + state가 변한 값만 렌더링 되도록 최적화를 지원하는 react 기능
 + memo 컴포넌트 생성 후 기존 컴포넌트 대신 렌더링 되게 만들어주면 된다
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -211,7 +211,7 @@ Btn은 컴포넌트이기 때문에, onClick은 이벤트리스너가 아닌 pro
 
 `https://unpkg.com/prop-types@15.7.2/prop-types.js` - script에 추가해주기
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
