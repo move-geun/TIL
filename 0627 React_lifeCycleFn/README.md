@@ -35,7 +35,7 @@ react 앱의 핵심은 `분할&정복`
 
 ```
 
-```react
+```javascript
 // button.js
 
 // react 강점 중 하나, className을 다 기억해서 따로 적용하지 않고 styles를 import 시켜서 자동으로 각기 다른 className을 랜덤으로 생성해준다 ==> 즉, 각기 다른 className을 기억하고 사용할 필요가 없다는 뜻. 또한 index.js에 css를 import 시키는 것이 아니기 때문에, 현재 파일 button.js 내에서 styles.btn이 적용된 컴포넌트에만 css가 적용된다!
@@ -59,7 +59,7 @@ export default Button;
 
 ```
 
-```react
+```javascript
 // index.js
 
 import React from "react";
@@ -89,7 +89,7 @@ root.render(
 
 : 특정함수의 실행주기를 제어해준다.
 
-```react
+```javascript
 import { useState } from "react";
 
 function App() {
@@ -129,7 +129,7 @@ useEffect('실행이 제한될 함수', 'Deps')로 구성되어 있다
 다음 예시를 통해 알아보자~~!!
 ```
 
-```react
+```javascript
 // app.js
 
 // useState import 하기
@@ -229,7 +229,7 @@ export default App;
 
 useEffect의 마지막에 필요한 함수나 정보를 return 함으로써 컴포넌트 삭제시 원하는 함수나 정보를 실행시킬 수 있다
 
-```react
+```javascript
 import { useEffect, useState } from "react";
 
 // cleanUpFn : 컴포넌트가 사라질 때, 특정 함수 실행이나 정보를 전달할 수 있게 도와주는 함수
