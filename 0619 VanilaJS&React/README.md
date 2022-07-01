@@ -31,7 +31,7 @@ ex- 버튼을 클릭하면 총 토탈 수가 올라가는 홈페이지를 만들
 
 `React - hard.ver` -- 사실상 안 쓴다.(그냥 React가 어떻게 작동하는지 알기 위해서 작성해 본 코드)
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -82,7 +82,7 @@ JSX는 자바스크립트의 확장버전, 객체를 표현한다
 
 `React - Easy.ver(Use JSX)` - 사실상 react에서 사용하는 방식
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -118,7 +118,7 @@ JSX는 자바스크립트의 확장버전, 객체를 표현한다
 
 **Ver.1 (비추천)**
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -199,7 +199,7 @@ console.log(a)	// 2
 console.log(a)	// 3
 ```
 
-```react
+```javascript
 <!DOCTYPE html>
 <html lang="en">
   <body>
