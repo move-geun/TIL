@@ -12,10 +12,10 @@ public class UserDAO {
 
     public UserDAO() {
         try {
-            String dbURL = "jdbc:mariadb://localhost:3306/BBS";
+            String dbURL = "jdbc:mariadb://localhost:3306/BBA";
             String dbID = "root";
             String dbPassword = "1234";
-            Class.forName("com.mariadb.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class UserDAO {
             return -1; // 아이디 없음
         } catch (Exception e) {
             e.printStackTrace();
+            return -2; // 데이터베이스 오류
         }
-        return -2; // 데이터베이스 오류
     }
 }
