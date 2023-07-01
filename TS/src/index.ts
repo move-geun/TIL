@@ -1,7 +1,8 @@
-import { init, exit } from "myPackage";
+import { init, exit } from "./myPackage";
 
 init({
-  urls: "adfa",
+  debug: true,
+  urls: "adfasd",
 });
 
-exit(3);
+exit(5);
